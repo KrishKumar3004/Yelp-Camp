@@ -12,8 +12,6 @@ mongoose
     console.log("Mongo Error");
   });
 
-const sample = (array) => array[Math.floor(Math.random() * array.length)];
-
 const seedDb = async () => {
   await Campground.deleteMany({});
   for (let i = 0; i < 50; i++) {

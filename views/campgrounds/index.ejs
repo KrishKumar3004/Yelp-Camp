@@ -2,45 +2,36 @@
 
 <div id="cluster-map"></div>
 
-<h1>All Campgrounds</h1>
-<div>
-  <a href="/campgrounds/new">Add new</a>
-</div>
+<h1 class="custom-heading">Campgrounds</h1>
 
 <% for(let campground of campgrounds){ %>
-<div class="card mb-3">
-  <div class="row">
-    <div class="col-md-4">
-      <% if(campground.images.length > 0) { %>
-      <img
-        style="max-height: 300px"
-        src="<%= campground.images[0].url %>"
-        alt=""
-        class="img-fluid"
-      />
-      <% } %> <% if(campground.images.length == 0) { %>
-      <img
-        style="max-height: 300px"
-        src="https://res.cloudinary.com/dszmcizxu/image/upload/v1682174700/YelpCamp/auqaeolrv9crvbenmpfd.jpg"
-        alt=""
-        class="img-fluid"
-      />
-      <% } %>
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"><%= campground.title %></h5>
-        <p class="card-text"><%= campground.description %></p>
-        <p class="card-text">
-          <small class="text-muted"> <%= campground.location %> </small>
-        </p>
-        <a class="btn btn-primary" href="/campgrounds/<%= campground._id %>"
-          >View</a
-        >
+<a href="/campgrounds/<%= campground._id %>">
+  <div class="card mb-3 custom-color">
+    <div class="row">
+      <div class="c-img col-md-4">
+        <% if(campground.images.length > 0) { %>
+        <img src="<%= campground.images[0].url %>" alt="" class="img-fluid" />
+        <% } %> <% if(campground.images.length == 0) { %>
+        <img
+          src="https://res.cloudinary.com/dszmcizxu/image/upload/v1682174700/YelpCamp/auqaeolrv9crvbenmpfd.jpg"
+          alt=""
+          class="img-fluid"
+        />
+        <% } %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title spl-title"><%= campground.title %></h4>
+          <p class="card-text"><%= campground.description %></p>
+          <p class="card-text">
+            <i class="fa-solid fa-location-dot" style="color: #ffffff"></i>
+            <small> <%= campground.location %> </small>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</a>
 <% } %>
 
 <script>
