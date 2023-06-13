@@ -9,7 +9,7 @@ body {
 }
 
 .cover-container {
-  max-width: 60vw;
+  max-width: 80vw;
 }
 
 
@@ -17,4 +17,8 @@ body {
 .btn-secondary:hover {
   color: #333;
   text-shadow: none;
+}
+
+.button-font {
+  font-weight: 900;
 }
