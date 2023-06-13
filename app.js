@@ -1,7 +1,6 @@
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -17,6 +16,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const userRoutes = require("./routes/users.js");
 const mongoSanitize = require("express-mongo-sanitize");
+const MongoStore = require("connect-mongo");
 // const helmet = require("helmet");
 
 mongoose
@@ -84,6 +84,10 @@ app.set("views", path.join(__dirname, "views"));
 app.engine("ejs", ejsMate);
 
 const sessionConfig = {
+  store: MongoStore.create({
+    mongoUrl: process.env.DB_URL || "mongodb:// 127.0.0.1:27017/yelp-camp",
+    touchAfter: 24 * 60 * 60,
+  }),
   name: "session",
   secret: "thisshouldbeabettersecret!",
   resave: false,
